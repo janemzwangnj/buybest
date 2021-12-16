@@ -25,7 +25,7 @@
 
 ## Getting Started
 
-- Create a new repo
+- Create a [new repo](https://github.com/janemzwangnj/buybest)
 - Write a readme.md
 - Draw ERD and Components Hierarchy Diagram
 - Create a [Trello](https://trello.com/b/syd8w36y/buybest)
