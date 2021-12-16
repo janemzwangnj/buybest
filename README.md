@@ -14,7 +14,7 @@
 
 ## Overview
 
-**This project is to build a full-stack (Mongoose/Express/React/Node), professional-looking application with a functioning backend and frontend.**
+**This project is to build a full-stack (Mongoose/Express/React/Node) application with a functioning backend and frontend.**
 <br>
 
 - The backend sever is a MongoDB with Mongoose/Express which is document-orented and offers a faster query procss. It is used as a complementary data storage to transaction SQL databases for retail stores. The information of products and reviews can be pull into MongoDB from the main SQL databases in retail stores.
@@ -28,7 +28,7 @@
 - Create a new repo
 - Write a readme.md
 - Draw ERD and Components Hierarchy Diagram
-- Create a [Trallo](https://trello.com/b/syd8w36y/buybest)
+- Create a [Trello](https://trello.com/b/syd8w36y/buybest)
 
 ---
 
