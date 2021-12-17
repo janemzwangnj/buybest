@@ -17,7 +17,7 @@
 **This project is to build a full-stack (Mongoose/Express/React/Node) application with a functioning backend and frontend.**
 <br>
 
-- The backend sever is a MongoDB with Mongoose/Express which is document-orented and offers a faster query procss. It works as **a complementary data storage of the transaction SQL databases for retail stores.** The information data of products and reviews is pulled into MongoDB from the main SQL databases of a retail store.
+- The backend sever is a MongoDB with Mongoose/Express which is document-oriented and offers a faster query process. It works as **a complementary data storage of the transaction SQL databases for retail industry.** The information data of products and reviews is pulled into a MongoDB from the main SQL databases of a retail store.
 - The frondend website is implemented with React/Node as a single page application(SPA). Customers are allowed to interact with web pages to search products and read/write product reviews, by making _requests_(buttons, HTMLforms, dropsowns, searchbars, etc.) to get/post/update/delete reviews to the backend server.<br>  
   In this project, [Faker](https://faker.readthedocs.io/en/master/) is used to create the information data of products and reviews to test the project. Later on a third party API call [SerpApi](https://serpapi.com/) for some retail stores, like Home Depot or WalMart, is used to pull the data from the retail transaction databases into the MongoDB.
 

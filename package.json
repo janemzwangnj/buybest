@@ -1,0 +1,24 @@
+{
+  "name": "buybest",
+  "version": "1.0.0",
+  "description": "#### By: Jane Mingzhen Wang",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janemzwangnj/buybest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janemzwangnj/buybest/issues"
+  },
+  "homepage": "https://github.com/janemzwangnj/buybest#readme",
+  "dependencies": {
+    "faker": "^5.5.3",
+    "mongoose": "^6.1.2"
+  }
+}
