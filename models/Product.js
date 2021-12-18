@@ -8,7 +8,7 @@ const Product = new Schema(
     manufacturer: { type: String, required: true },
     rating: { type: Number, required: true },
     description: { type: String, required: true },
-    image: { type: String, required: true },
+    image: { type: String, required: false },
     reviews: [{ type: Schema.Types.ObjectId, ref: 'reviews' }]
   },
   { timestamps: true }
