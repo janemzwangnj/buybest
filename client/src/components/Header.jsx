@@ -6,9 +6,9 @@ export default function Header(props) {
     <header>
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/productlist">Prod</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/fakerstore">FakerStore</NavLink>
+        <NavLink to="/homedepot">HomeDepot</NavLink>
+        <NavLink to="/walmart">Walmart</NavLink>
       </nav>
     </header>
   )
