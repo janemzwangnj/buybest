@@ -4,6 +4,7 @@ import axios from 'axios'
 import ProductCard from '../components/ProductCard'
 
 export default function ProductList(props) {
+  //console.log(props)
   const [products, setProducts] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [searched, toggleSearched] = useState(false)
@@ -11,7 +12,7 @@ export default function ProductList(props) {
   
    const getProducts = async () => {
     const response = await axios.get('http://localhost:3001/products')
-    console.log(response)
+    //console.log(response)
     setProducts(response.data.products)
   }
   useEffect(()=>{
@@ -20,14 +21,14 @@ export default function ProductList(props) {
 
   return (<div>
     <div className="products">
-      <h2 style={{color:"white",textAlign:'center'}}> {props.storeName} Products</h2>
+      <h2 style={{color:"white",textAlign:'center'}}> Products</h2>
       <section className="container-grid">
         {products.map(product=>(
           <ProductCard key={product._id} 
           name={product.title} 
           rating={product.rating} 
           image={product.image} 
-          onClick={()=>props.history.push(`/productdetails/${product._id}`)}
+          onClick={()=>props.history.push(`/fakestore/productdetails/${product._id}`)}
           {...product}/> 
           ))}
       </section>

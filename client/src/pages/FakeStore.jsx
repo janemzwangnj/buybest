@@ -17,15 +17,11 @@ function FakeStore() {
           <Route exact path="/fakestore">
             <AboutFakeStore/>
           </Route>
-          <Route path="/fakestore/productlist">
-             <ProductList storeName={'Fakestore'} />
-            </Route>
-          <Route path="/fakestore/productdetails">
-            <ProductDetails storeName={'Fakestore'} />
-            </Route> 
-          <Route path="/fakestore/addreview">
+          <Route path="/fakestore/productlist" component={ProductList} />
+          <Route path="/fakestore/productdetails/:productId" component={ProductDetails} />
+         {/*  <Route path="/fakestore/addreview">
             <AddReview storeName={'Fakestore'}/> 
-            </Route> 
+            </Route>  */}
         </Switch>
       </main>
       </div>
