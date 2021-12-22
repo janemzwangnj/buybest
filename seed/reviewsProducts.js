@@ -6,7 +6,7 @@ const { date } = require('faker');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const createReviews = async () => {
-  const reviews = [...Array(400)].map((review) => {
+  const reviews = [...Array(200)].map((review) => {
     // console.log(faker.datatype);
     return new Review({
       title: faker.lorem.sentence(),
@@ -26,11 +26,10 @@ const createReviews = async () => {
 };
 
 const createProductsWithReviews = async (reviews) => {
-  let lenOfItems = 100;
+  let lenOfItems = 50;
   const products = [...Array(lenOfItems)].map((product) => {
     const selectedReviews = reviews.splice(0, reviews.length / lenOfItems);
     return {
-      product_id: faker.datatype.uuid(),
       title: faker.commerce.productName(),
       price: faker.commerce.price(1, 500, 2, '$'),
       manufacturer: faker.company.companyName(),
@@ -49,5 +48,4 @@ const run = async () => {
   await createProductsWithReviews(reviews);
   db.close();
 };
-
 run();

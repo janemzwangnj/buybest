@@ -1,13 +1,32 @@
 const { Product, Review } = require('../models');
-
-const getProductsByName = async (req, res) => {
+/* 
+const getProductsById = async (req, res) => {
   try {
-    const { title } = req.params;
-    const products = await new Product.findById(title);
-    await products.save();
-    return res.status(201).json({
-      rides
-    });
+    //console.log(req.params);
+    const { id } = req.params;
+    const products = await Product.findById(id);
+    if (products) {
+      return res.status(200).json({ products });
+    }
+    return res
+      .status(404)
+      .send('Product with the specified ID does not exists');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}; */
+const getProductsById = async (req, res) => {
+  try {
+    console.log(req.params);
+    const { id } = req.params;
+    const products = await Product.findById(id);
+    console.log(products);
+    if (products) {
+      return res.status(200).json({ products });
+    }
+    return res
+      .status(404)
+      .send('Product with the specified ID does not exists');
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -44,9 +63,9 @@ const createReview = async (req, res) => {
 
 const getReviewsById = async (req, res) => {
   try {
-    console.log(req.params);
-    const { _id } = req.params;
-    const reviews = await Review.findById(_id);
+    //console.log(req.params);
+    const { id } = req.params;
+    const reviews = await Review.findById(id);
     if (reviews) {
       return res.status(200).json({ reviews });
     }
@@ -56,42 +75,52 @@ const getReviewsById = async (req, res) => {
   }
 };
 
-/* const updateReview = async (req, res) => {
+const updateReview = async (req, res) => {
+  console.log('here is update');
   try {
     const { id } = req.params;
-    await Plant.findByIdAndUpdate(id, req.body, { new: true }, (err, plant) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      if (!plant) {
-        res.status(500).send('Plant not found!');
-      }
-      return res.status(200).json(plant);
-    });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-}; */
 
-/* const deleteReview = async (req, res) => {
+    await Review.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true },
+      (err, review) => {
+        if (err) {
+          res.status(500);
+          console.log(err);
+        }
+        if (!review) {
+          res.status(500);
+          console.log('Review not found!');
+        }
+        return res.status(200).json({ review });
+      }
+    );
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500);
+  }
+};
+
+const deleteReview = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleted = await Plant.findByIdAndDelete(id);
+    const deleted = await Review.findByIdAndDelete(id);
     if (deleted) {
-      return res.status(200).send('Plant deleted');
+      return res.status(200).send('Review deleted');
     }
-    throw new Error('Plant not found');
+    throw new Error('Review not found');
   } catch (error) {
     return res.status(500).send(error.message);
   }
-}; */
+};
 
 module.exports = {
-  getProductsByName,
+  getProductsById,
   getAllProducts,
   getAllReviews,
   createReview,
-  getReviewsById
-  /*  updateReview,
-  deleteReview */
+  getReviewsById,
+  updateReview,
+  deleteReview
 };
