@@ -10,7 +10,7 @@ export default function ProductDetails(props) {
   const [reviews, setReviews] = useState([]) 
   const [isPost, toggleIsPost] = useState(false)
   const [isView, toggleIsView] = useState(false)
- /*  const [searchQuery, setSearchQuery] = useState('') */
+  const [isUpdate, toggleIsUpdate] = useState(false)
   let reviewsIdTmp = [];
   let reviewsTmp = [];
 
@@ -26,39 +26,39 @@ const getProduct = async ()=>{
     getProduct();
   }, [])  
 
-  /* const getReviews =  async (event) => {
-    console.log(reviewsId);
-    const response = axios.get(`http://localhost:3001/reviews/${reviewsId[0]}`);
-    console.log(response)
-     reviewsId.map(aReviewId=>{
-      const response = axios.get(`http://localhost:3001/reviews/${aReviewId}`);
-      console.log(response);
-      //reviewsTmp.push(response.data);
-    }); 
-    setReviews(reviewsTmp);
-    }   */
-
-  const getReviews = (event) => {
-      
-      /* map((id,index,reviewsId)=>{
-      const response = await axios.get(`http://localhost:3001/reviews/${id}`)
-      console.log(response) 
-      //setReviews(response.data.reviews)
-    }) */
-  }
-
+    const viewAllReviews = async (event)=>{
+      console.log(reviewsId)
+      event.preventDefault()
+      for (let i = 0; i<reviewsId.length; i++){
+        const res = await axios.get(`http://localhost:3001/reviews/${reviewsId[i]}`);
+        console.log(res)
+        reviewsTmp.push(res.data.reviews)
+      }
+      /* reviewsTmp = reviewsId.map((aReviewId) => (res.data.reviews));  */
+      console.log(reviewsTmp)
+      setReviews(reviewsTmp)
+      toggleIsView(true)
+      toggleIsPost(false)
+      toggleIsUpdate(false)
+    };
+  
   const addReview = async (event)=>{
     event.preventDefault()
     
     toggleIsPost(true);
     toggleIsView(false);
+    toggleIsUpdate(false)
   };
-  const viewAllReviews = async (event)=>{
+
+  const updateReview = async (event)=>{
     event.preventDefault()
-    getReviews(event);
-    toggleIsView(true);
+    
     toggleIsPost(false);
-  };
+    toggleIsView(false);
+    toggleIsUpdate(true)
+  }
+  const deleteReview = async ()=>{}
+  
 
   return (
     <div className="product-content"> 
@@ -78,7 +78,7 @@ const getProduct = async ()=>{
         </div>
         <div className='postandview'>
         <button onClick={addReview}>Post a Review</button>
-        <button onClick={viewAllReviews}>View All Reviews</button>
+        <button onClick={viewAllReviews}>View All Reviews For This Product </button>
         </div>
       </section>
         <div>
@@ -103,13 +103,30 @@ const getProduct = async ()=>{
           <div>
             <h2>All Reviews: </h2>
              <section className="search-results container-grid">
-              {reviews.map((review) => (
+              { reviews.map((review, index) => (
                 <ReviewCard
-                  key={review._id}
+                  key={index}
+                  delete = {deleteReview}
+                  update = {updateReview}
                   {...review}
                 />
               ))}
             </section> 
+          </div>
+        ) : null}
+        </div>
+        <div>
+        {isUpdate ? (
+          <div>
+            <h2>Update this Review: </h2>
+            {/*  <section className="search-results container-grid">
+              { reviews.map((review, index) => (
+                <ReviewCard
+                  key={index}
+                  {...review}
+                />
+              ))}
+            </section>  */}
           </div>
         ) : null}
         </div>
