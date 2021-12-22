@@ -18,7 +18,7 @@ header nav a:hover {
 aside {
   background-color: #302e2e;
   /*   position: absolute; */
-  top: 3em;
+  top: 0;
   left: 0;
   height: 100%;
   width: 200px;
@@ -124,10 +124,7 @@ button {
   grid-gap: 1em;
   justify-content: center;
 }
-/* .sidebar-container {
-  display: grid;
-  grid-template-columns: 1fr 9fr;
-} */
+
 .products {
   width: 100%;
 }
@@ -138,7 +135,7 @@ button {
 }
 
 .product-content .image-container {
-  width: 95vw;
+  width: 80vw;
   margin: auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1em 0;
@@ -151,12 +148,13 @@ button {
 
 .image-container img {
   margin: auto;
-  text-align: center;
-  width: 100%;
+  align-items: center;
+  align-self: center;
+  width: 40%;
 }
 
 .details {
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
@@ -165,4 +163,12 @@ button {
 }
 .space {
   justify-content: space-between;
+}
+.postandview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1em 0;
 }
