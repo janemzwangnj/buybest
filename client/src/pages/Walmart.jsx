@@ -4,6 +4,7 @@ import SideBar from '../components/SideBar';
 import ProductList from '../pages/ProductList';
 import ProductDetails from '../pages/ProductDetails';
 import AddReview from '../pages/AddReview';
+import AboutWalmart from './AboutWalmart';
 
 function Walmart() {
   return (
@@ -12,7 +13,10 @@ function Walmart() {
       <Search />
       <main>
         <Switch>
-          <Route exact path="/walmart/productlist">
+          <Route exact path="/walmart">
+            <AboutWalmart/>
+          </Route>
+          <Route path="/walmart/productlist">
             <ProductList storeName={'Walmart'}/>
           </Route>
           <Route path="/walmart/productdetails">

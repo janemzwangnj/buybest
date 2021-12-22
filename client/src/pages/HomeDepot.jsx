@@ -4,6 +4,7 @@ import SideBar from '../components/SideBar';
 import ProductList from '../pages/ProductList';
 import ProductDetails from '../pages/ProductDetails';
 import AddReview from '../pages/AddReview';
+import AboutHomeDepot from './AboutHomeDepot';
 
 function HomeDepot() {
   return (
@@ -12,7 +13,10 @@ function HomeDepot() {
       <Search />
       <main>
         <Switch>
-          <Route exact path="/homedepot/productlist">
+          <Route exact path="/homedepot">
+            <AboutHomeDepot/>
+          </Route> 
+          <Route path="/homedepot/productlist">
             <ProductList storeName={'HomeDepot'} />
           </Route> 
           <Route path="/homedepot/productdetails">
