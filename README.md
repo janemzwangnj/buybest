@@ -40,7 +40,7 @@
 
 ## Component Hierarchy Diagram for the frontend
 
-![image](./images/componentsChart.png)
+![image](./images/CHD.png)
 
 ---
 
