@@ -72,7 +72,7 @@ export default function UpdateReview(props) {
           value={newReview.title}
           onChange={handleChange2}
           name={'title'}
-          placeholder={newReview.title}
+          placeholder={'title'}
         />
         <input
           type="text"
