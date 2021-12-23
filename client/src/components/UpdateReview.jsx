@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function PostReview(props) {
+export default function UpdateReview(props) {
   const [returnId, setReturnId] = useState(0);
+  const [reviewId, setReviewId] = useState('');
   const [newReview, setNewReview] = useState({
     title: '',
     text: '',
@@ -12,6 +13,14 @@ export default function PostReview(props) {
     review_submission_time:''
   });
 
+  const getReview = async (e) => {
+    e.preventDefault();
+    const res = await axios.get(`http://localhost:3001/reviews/${reviewId}`);
+    /* setReviewId(''); */
+    console.log(res)
+     setNewReview(res.data.reviews)
+  };
+
   const createReview = (e) => {
     e.preventDefault();
     const createdReview = {
@@ -19,7 +28,7 @@ export default function PostReview(props) {
     };
     console.log(createdReview);
     axios
-      .post('http://localhost:3001/createreviews', createdReview)
+      .put(`http://localhost:3001/reviews/${reviewId}`, createdReview)
       .then((response) => setReturnId(response.data.id));
     setNewReview({
       title: '',
@@ -31,7 +40,10 @@ export default function PostReview(props) {
     });
   };
 
-  const handleChange = (e) => {
+  const handleChange1 = (e) => {
+    setReviewId( e.target.value);
+  };
+  const handleChange2 = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });
     //console.log(newReview);
   };
@@ -42,47 +54,58 @@ export default function PostReview(props) {
 
   return (
     <div>
-      <h3>Add A New Review</h3>
+     {/*  <h3>Update Review</h3> */}
+      <form onSubmit={getReview}>
+        <input
+          type="text"
+          value={reviewId}
+          onChange={handleChange1}
+          name={'reviewId'}
+          placeholder={'reviewId'}
+        />
+        <button type="submit">ID Submit</button>
+      </form>
+
       <form className='postform' onSubmit={handleSubmit}>
         <input
           type="text"
           value={newReview.title}
-          onChange={handleChange}
+          onChange={handleChange2}
           name={'title'}
-          placeholder={'title'}
+          placeholder={newReview.title}
         />
         <input
           type="text"
           value={newReview.text}
-          onChange={handleChange}
+          onChange={handleChange2}
           name={'text'}
           placeholder={'text'}
         />
         <input
           type="text"
           value={newReview.rating}
-          onChange={handleChange}
+          onChange={handleChange2}
           name={'rating'}
           placeholder={'rating'}
         />
         <input
           type="text"
           value={newReview.customer_nickname}
-          onChange={handleChange}
+          onChange={handleChange2}
           name={'customer_nickname'}
           placeholder={'customer_nickname'}
         />
         <input
           type="text-area"
           value={newReview.customer_type}
-          onChange={handleChange}
+          onChange={handleChange2}
           name={'customer_type'}
           placeholder={'customer_type'}
         />
         <input
           type="text-area"
           value={newReview.review_submission_time}
-          onChange={handleChange}
+          onChange={handleChange2}
           name={'review_submission_time'}
           placeholder={'review_submission_time'}
         />

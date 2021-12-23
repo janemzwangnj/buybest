@@ -7,10 +7,6 @@ export default function DeleteReview(props) {
 
   const DeleteReview = (e) => {
     e.preventDefault();
-    const createdReviewId = {
-      ...reviewId
-    };
-    console.log(createdReviewId)
     axios.delete(`http://localhost:3001/reviews/${reviewId}`);
     setReviewId('');
   };

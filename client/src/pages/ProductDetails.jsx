@@ -128,7 +128,7 @@ const getProduct = async ()=>{
         {isUpdate ? (
           <div>
             <h2>Update this Review: </h2>
-             <section className="search-results container-grid">
+             <section className="search-results">
                 <UpdateReview  
                 />
             </section> 
