@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import FakeStore from './pages/FakeStore';
 import HomeDepot from './pages/HomeDepot';
 import Walmart from './pages/Walmart';
+import ProductList from './pages/ProductList';
+import ProductDetails from './pages/ProductDetails';
+import UpdateReview from './components/UpdateReview';
 
 function App() {
   return (
@@ -16,6 +19,15 @@ function App() {
           <Route path="/fakestore" component={FakeStore} />
           <Route path="/homedepot" component={HomeDepot} />
           <Route path="/walmart" component={Walmart} />
+          <Route path="/fakestore/productlist" component={ProductList} />
+          <Route
+            path="/fakestore/productdetails/:productId"
+            component={ProductDetails}
+          />
+          <Route
+            path="/fakestore/productdetails/updatereview"
+            component={UpdateReview}
+          />
         </Switch>
       </main>
     </div>

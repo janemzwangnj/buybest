@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import AddReview from './AddReview';
+import PostReview from '../components/PostReview';
+import DeleteReview from '../components/DeleteReview';
 import ReviewCard from '../components/ReviewCard';
+import UpdateReview from '../components/UpdateReview';
 
 export default function ProductDetails(props) {
 
@@ -11,6 +13,8 @@ export default function ProductDetails(props) {
   const [isPost, toggleIsPost] = useState(false)
   const [isView, toggleIsView] = useState(false)
   const [isUpdate, toggleIsUpdate] = useState(false)
+  const [isDelete, toggleIsDelete] = useState(false)
+  const [currReviewId, setCurrReviewId] = useState('')
   let reviewsIdTmp = [];
   let reviewsTmp = [];
 
@@ -40,11 +44,12 @@ const getProduct = async ()=>{
       toggleIsView(true)
       toggleIsPost(false)
       toggleIsUpdate(false)
+      toggleIsDelete(false)
     };
   
   const addReview = async (event)=>{
     event.preventDefault()
-    
+    toggleIsDelete(false)
     toggleIsPost(true);
     toggleIsView(false);
     toggleIsUpdate(false)
@@ -52,12 +57,20 @@ const getProduct = async ()=>{
 
   const updateReview = async (event)=>{
     event.preventDefault()
-    
+    console.log(event.target)
+   /*  setCurrReviewId(event.target.); */
     toggleIsPost(false);
     toggleIsView(false);
     toggleIsUpdate(true)
+    toggleIsDelete(false)
   }
-  const deleteReview = async ()=>{}
+  const deleteReview = async (event)=>{
+    event.preventDefault()
+    toggleIsDelete(true)
+    toggleIsPost(false);
+    toggleIsView(false);
+    toggleIsUpdate(false)
+  }
   
 
   return (
@@ -77,24 +90,19 @@ const getProduct = async ()=>{
           <h3>{productDetails.description}</h3>
         </div>
         <div className='postandview'>
+        <button onClick={viewAllReviews}>View All Reviews</button>  
         <button onClick={addReview}>Post a Review</button>
-        <button onClick={viewAllReviews}>View All Reviews For This Product </button>
+        <button onClick={updateReview}>Update a Review</button>
+        <button onClick={deleteReview}>Delete a Review</button>
         </div>
       </section>
         <div>
         {isPost ? (
           <div>
             <h2>Post your review here:</h2>
-            {/* <section className="search-results">
-                <AddReview
-                  key={result.id}
-                  {...result}
-                  onClick={() =>
-                    props.history.push(`/games/details/${result.id}`)
-                  }
-                  image={result.background_image}
-                />
-            </section> */}
+             <section className="search-results">
+                <PostReview/>
+            </section> 
           </div>
         ) : null}
         </div>
@@ -106,8 +114,9 @@ const getProduct = async ()=>{
               { reviews.map((review, index) => (
                 <ReviewCard
                   key={index}
-                  delete = {deleteReview}
-                  update = {updateReview}
+                  deleteReview = {deleteReview}
+                  updateReview = {updateReview}
+                  onClick={()=>props.history.push(`/fakestore/productdetails/updateReview/${review._id}`)}
                   {...review}
                 />
               ))}
@@ -119,14 +128,20 @@ const getProduct = async ()=>{
         {isUpdate ? (
           <div>
             <h2>Update this Review: </h2>
-            {/*  <section className="search-results container-grid">
-              { reviews.map((review, index) => (
-                <ReviewCard
-                  key={index}
-                  {...review}
+             <section className="search-results container-grid">
+                <UpdateReview  
                 />
-              ))}
-            </section>  */}
+            </section> 
+          </div>
+        ) : null}
+        </div>
+        <div>
+        {isDelete ? (
+          <div>
+            <h2>Delete Review: </h2>
+             <section className="search-results container-grid">
+                <DeleteReview />
+            </section> 
           </div>
         ) : null}
         </div>

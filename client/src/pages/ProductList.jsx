@@ -21,7 +21,7 @@ export default function ProductList(props) {
 
   return (<div>
     <div className="products">
-      <h2 style={{color:"white",textAlign:'center'}}> Products</h2>
+      <h2 style={{color:"white",textAlign:'center'}}> FakeStore Products</h2>
       <section className="container-grid">
         {products.map(product=>(
           <ProductCard key={product._id} 

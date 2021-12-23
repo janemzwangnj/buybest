@@ -10,10 +10,11 @@ export default function ReviewCard(props) {
         <h3>Rating: {props.rating} </h3>
         <h4>Customer_type: {props.customer_type}</h4>
         <h4>Review_submission_time: {props.review_submission_time}</h4>
+        <h4>ID: {props._id}</h4>
       </div>
       <div className='deleteOrupdate'>
-      <button onClick={props.delete}>Delete</button>
-      <button onClick={props.update}>Update</button>
+      <button onClick={props.deleteReview}>Delete</button>
+      <button id={'{props.key}'} onClick={props.updateReview}>Update</button>
       </div>
     </div>
   )

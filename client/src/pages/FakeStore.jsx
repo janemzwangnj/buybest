@@ -9,7 +9,7 @@ import AboutFakeStore from './AboutFakeStore';
 function FakeStore() {
   return (
     <div className='sidebar-container'> 
-      <SideBar storeName={'/fakestore'}/>
+     {/*  <SideBar storeName={'/fakestore'}/> */}
       <div>
       <Search />
       <main>
