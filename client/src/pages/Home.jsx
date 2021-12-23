@@ -3,7 +3,7 @@ import React from 'react'
 export default function Home(props) {
  // console.log(props)
   return <div>
-    <h1 style={{color:"red",textAlign:'center'}}>Home</h1>
+    <h1 style={{color:"red",textAlign:'center'}}> BuyBest Home</h1>
     <h3 style={{textAlign:'left',margin:'auto'}}>  
     <p>This project is to build a full-stack (Mongoose/Express/React/Node) application with a functioning backend and frontend.</p>
     <ul>
