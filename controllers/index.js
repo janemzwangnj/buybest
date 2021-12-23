@@ -1,20 +1,5 @@
 const { Product, Review } = require('../models');
-/* 
-const getProductsById = async (req, res) => {
-  try {
-    //console.log(req.params);
-    const { id } = req.params;
-    const products = await Product.findById(id);
-    if (products) {
-      return res.status(200).json({ products });
-    }
-    return res
-      .status(404)
-      .send('Product with the specified ID does not exists');
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-}; */
+
 const getProductsById = async (req, res) => {
   try {
     console.log(req.params);

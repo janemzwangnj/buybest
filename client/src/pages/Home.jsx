@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Home(props) {
- // console.log(props)
   return <div>
     <h1 style={{color:"red",textAlign:'center'}}> BuyBest Home</h1>
     <h3 style={{textAlign:'left',margin:'auto'}}>  

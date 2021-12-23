@@ -21,7 +21,6 @@ export default function ProductDetails(props) {
 
 const getProduct = async ()=>{
         const res = await axios.get(`http://localhost:3001/products/${props.match.params.productId}`)
-      //console.log(res);
       setProductDetails(res.data.products);
       reviewsIdTmp = res.data.products.reviews;
       setReviewsId(reviewsIdTmp); 
