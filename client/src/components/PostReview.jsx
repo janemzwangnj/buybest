@@ -11,7 +11,6 @@ export default function PostReview(props) {
     customer_nickname: '',
     review_submission_time:''
   });
-
   const createReview = (e) => {
     e.preventDefault();
     const createdReview = {

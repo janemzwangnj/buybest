@@ -67,8 +67,8 @@ input:focus::placeholder {
 }
 
 main {
-  left: 150px;
-  width: 80%;
+  left: 100px;
+  width: 90%;
   padding: 2em 0;
   position: relative;
 }

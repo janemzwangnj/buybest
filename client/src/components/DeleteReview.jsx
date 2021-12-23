@@ -9,7 +9,16 @@ export default function DeleteReview(props) {
     e.preventDefault();
     axios.delete(`http://localhost:3001/reviews/${reviewId}`);
     setReviewId('');
+    updateProduct();
   };
+
+  const updateProduct = ()=>{
+    const res = axios.get(`http://localhost:3001/products/${props.productId}`);
+
+    let product = res.data.products;
+    let newReviews = product.reviews.filter((review)=>review !== reviewId);
+    axios.put(`http://localhost:3001/products/${props.productId}`, newReviews);
+  }
 
   const handleChange = (e) => {
     setReviewId( e.target.value);

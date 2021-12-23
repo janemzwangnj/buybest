@@ -15,6 +15,7 @@ export default function ProductDetails(props) {
   const [isUpdate, toggleIsUpdate] = useState(false)
   const [isDelete, toggleIsDelete] = useState(false)
   const [currReviewId, setCurrReviewId] = useState('')
+  const [productId, setProductId] = useState('')
   let reviewsIdTmp = [];
   let reviewsTmp = [];
 
@@ -24,6 +25,7 @@ const getProduct = async ()=>{
       setProductDetails(res.data.products);
       reviewsIdTmp = res.data.products.reviews;
       setReviewsId(reviewsIdTmp); 
+      setProductId(props.match.params.productId);
     }
   useEffect(() =>{
     console.log(props.match.params);
@@ -101,7 +103,7 @@ const getProduct = async ()=>{
           <div>
             <h2>Post your review here:</h2>
              <section className="search-results">
-                <PostReview/>
+                <PostReview productId={productId}/>
             </section> 
           </div>
         ) : null}
@@ -129,8 +131,7 @@ const getProduct = async ()=>{
           <div>
             <h2>Update this Review: </h2>
              <section className="search-results">
-                <UpdateReview  
-                />
+                <UpdateReview />
             </section> 
           </div>
         ) : null}
@@ -140,7 +141,7 @@ const getProduct = async ()=>{
           <div>
             <h2>Delete Review: </h2>
              <section className="search-results container-grid">
-                <DeleteReview />
+                <DeleteReview productId={productId}/>
             </section> 
           </div>
         ) : null}

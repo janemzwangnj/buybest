@@ -40,6 +40,33 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+const updateProduct = async (req, res) => {
+  console.log('here is update');
+  try {
+    const { id } = req.params;
+
+    await Product.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true },
+      (err, product) => {
+        if (err) {
+          res.status(500);
+          console.log(err);
+        }
+        if (!product) {
+          res.status(500);
+          console.log('Product not found!');
+        }
+        return res.status(200).json({ product });
+      }
+    );
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500);
+  }
+};
+
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find();
@@ -118,6 +145,7 @@ const deleteReview = async (req, res) => {
 module.exports = {
   getProductsById,
   getAllProducts,
+  updateProduct,
   getAllReviews,
   createReview,
   getReviewsById,
