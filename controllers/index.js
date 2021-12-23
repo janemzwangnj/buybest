@@ -25,7 +25,7 @@ const getProductsById = async (req, res) => {
       return res.status(200).json({ products });
     }
     return res
-      .status(404)
+      .status(200)
       .send('Product with the specified ID does not exists');
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -117,7 +117,7 @@ const updateReview = async (req, res) => {
           console.log(err);
         }
         if (!review) {
-          res.status(500);
+          res.status(200);
           console.log('Review not found!');
         }
         return res.status(200).json({ review });
